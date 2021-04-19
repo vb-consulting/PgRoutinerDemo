@@ -6,4 +6,4 @@ It demonstrates alternative to ORM approach and how to solve problems with class
 
 Simple demo application is described by the following mockup sketch:
 
-![mockup](https://raw.githubusercontent.com/vb-consulting/PgRoutinerDemo/master/mockup.svg =100x20)
+![mockup](https://raw.githubusercontent.com/vb-consulting/PgRoutinerDemo/master/mockup.svg=100x20)
