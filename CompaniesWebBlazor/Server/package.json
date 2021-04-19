@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "build-db": "dotnet build ../Shared/CompaniesWebBlazor.Shared.csproj",
+    "scss-build": "node-sass --output ../Client ../Client --output-style compressed",
+    "scss-watch": "node-sass --watch --recursive --output ../Client ../Client --output-style compressed",
+    "dotnet-run": "dotnet run",
+    "dotnet-watch": "dotnet watch run"
+  },
+  "devDependencies": {
+    "bootstrap": "5.0.0-beta3"
+  }
+}

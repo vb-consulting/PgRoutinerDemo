@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CompaniesWeb.Shared;
+using CompaniesWebBlazor.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace CompaniesWeb.Server.Controllers
+namespace CompaniesWebBlazor.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
