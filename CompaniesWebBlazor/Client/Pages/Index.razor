@@ -1,16 +1,90 @@
 ﻿@page "/"
-
+@inject HttpClient Http
+@using System.Text.Json
 
 <_Nav BrandContent="PgRoutiner Demo"></_Nav>
-
 <main class="container vh-100">
 
-        <div>hai worldz</div>
+    <div class="row filter">
+        <div class="col form-group input-group">
+            <input type="text" class="form-control"
+                   autocorrect="off" autocapitalize="off" spellcheck="false"
+                   placeholder="Search by name..." />
+            <select class="form-select-lg">
+                <option selected>Select area...</option>
+                @foreach (var area in areas)
+                {
+                    <option value="@area.Id">@area.Name</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-primary">
+                <i class="icon-doc-new" />
+                Add New
+            </button>
+        </div>
+    </div>
+
+    <div class="row pager">
+        <div class="col">
+            <button type="button" class="btn btn-sm btn-outline-primary">
+                First
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-primary">
+                Last
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Website</th>
+                    <th scope="col">Area</th>
+                    <th scope="col">About</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var company in result.Page ?? Enumerable.Empty<SearchResultPage>())
+                {
+                    <tr>
+                        <th scope="row">
+                            <button type="button" class="btn btn-sm btn-outline-primary icon-edit"></button>
+                        </th>
+                        <td>@company.Name</td>
+                        <td>@company.Website</td>
+                        <td>@company.Area</td>
+                        <td>@company.About</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
 
 </main>
-
-
-
-
 <_Footer></_Footer>
 
+@code {
+    private IEnumerable<CompanyArea> areas = Enumerable.Empty<CompanyArea>();
+    private SearchResults result = new();
+
+    private const int pageSize = 10;
+    private int page = 1;
+    private SearchFilter filter = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        areas = await Http.GetFromJsonAsync<IEnumerable<CompanyArea>>("/companies/areas");
+        var f = Uri.EscapeDataString(JsonSerializer.Serialize(filter, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }));
+        result = await Http.GetFromJsonAsync<SearchResults>($"/companies/{f}/{page}/{pageSize}");
+    }
+}

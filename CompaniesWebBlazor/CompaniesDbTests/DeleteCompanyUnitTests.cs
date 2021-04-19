@@ -11,22 +11,22 @@ using CompaniesWebBlazor.Shared;
 
 namespace CompaniesDbTests
 {
-    public class DeleteCompaniesUnitTests : PostgreSqlUnitTestFixture
+    public class DeleteCompanyUnitTests : PostgreSqlUnitTestFixture
     {
-        public DeleteCompaniesUnitTests(PostgreSqlFixture fixture) : base(fixture) { }
+        public DeleteCompanyUnitTests(PostgreSqlFixture fixture) : base(fixture) { }
 
         [Fact]
-        public void DeleteCompanies_Test1()
+        public void DeleteCompany_Test1()
         {
             // Arrange
             var model = new Company { Name = "n", NameNormalized = "nn", About = "about", AreaId = 1, Website = "website" };
-            var result = Connection.CreateOnConflictDoUpdateReturningCompanies(model);
+            var result = Connection.CreateCompanyOnConflictDoUpdateReturning(model);
 
             // Act
-            Connection.DeleteCompanies(result);
+            Connection.DeleteCompany(result);
 
             // Assert
-            Assert.False(Connection.Read($"select * from {CompaniesDelete.Name} where id = {result.Id}").Any());
+            Assert.False(Connection.Read($"select * from {CompanyDelete.Name} where id = {result.Id}").Any());
         }
     }
 }

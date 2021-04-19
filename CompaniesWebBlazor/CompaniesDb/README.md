@@ -1,7 +1,7 @@
 # Dictionary for database `companies_web_demo`
 
 - Server: PostgreSQL `localhost:5434`, version `12.0`
-- Local time stamp: `2021-04-19T14:05:33.3375168+02:00`
+- Local time stamp: `2021-04-19T19:00:42.4508425+02:00`
 - Schema: public
 
 ## Table of Contents

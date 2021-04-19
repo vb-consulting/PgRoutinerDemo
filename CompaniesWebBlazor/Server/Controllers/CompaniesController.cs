@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CompaniesDb.Extensions;
+using CompaniesWebBlazor.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Npgsql;
@@ -32,6 +33,20 @@ namespace CompaniesWebBlazor.Server.Controllers
             catch (NpgsqlException e)
             {
                 logger.LogError(e, $"Erroc calling {PgRoutineSearchCompanies.Name}");
+                return this.BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("areas")]
+        public ActionResult<IEnumerable<CompanyArea>> GetAreas()
+        {
+            try
+            {
+                return Ok(connection.ReadCompanyAreaAll());
+            }
+            catch (NpgsqlException e)
+            {
+                logger.LogError(e, $"Erroc calling {CompanyAreaReadAll.Name}");
                 return this.BadRequest(e.Message);
             }
         }

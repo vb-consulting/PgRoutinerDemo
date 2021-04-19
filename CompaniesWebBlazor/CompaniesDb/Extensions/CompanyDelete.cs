@@ -10,7 +10,7 @@ using CompaniesWebBlazor.Shared;
 
 namespace CompaniesDb.Extensions
 {
-    public static class CompaniesDelete
+    public static class CompanyDelete
     {
         public const string Name = "companies";
 
@@ -23,7 +23,7 @@ namespace CompaniesDb.Extensions
         /// Delete record of table ""companies"" by matching values of key fields: id
         /// </summary>
         /// <param name="model">Instance of a "CompaniesDb.Extensions.Company" model class.</param>
-        public static void DeleteCompanies(this NpgsqlConnection connection, Company model)
+        public static void DeleteCompany(this NpgsqlConnection connection, Company model)
         {
             connection
                 .Prepared()
@@ -35,7 +35,7 @@ namespace CompaniesDb.Extensions
         /// Delete record of table ""companies"" by matching values of key fields: id
         /// </summary>
         /// <param name="model">Instance of a "CompaniesDb.Extensions.Company" model class.</param>
-        public static async ValueTask DeleteCompaniesAsync(this NpgsqlConnection connection, Company model)
+        public static async ValueTask DeleteCompanyAsync(this NpgsqlConnection connection, Company model)
         {
             await connection
                 .Prepared()

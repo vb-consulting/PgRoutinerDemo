@@ -11,34 +11,35 @@ using CompaniesWebBlazor.Shared;
 
 namespace CompaniesDbTests
 {
-    public class CreateOnConflictDoUpdateReturningCompaniesUnitTests : PostgreSqlUnitTestFixture
+    public class CreateCompanyOnConflictDoUpdateReturningUnitTests : PostgreSqlUnitTestFixture
     {
-        public CreateOnConflictDoUpdateReturningCompaniesUnitTests(PostgreSqlFixture fixture) : base(fixture) { }
+        public CreateCompanyOnConflictDoUpdateReturningUnitTests(PostgreSqlFixture fixture) : base(fixture) { }
 
         [Fact]
-        public void CreateOnConflictDoUpdateReturningCompanies_Test1()
+        public void CreateCompanyOnConflictDoUpdateReturning_Test1()
         {
             // Arrange
             var model = new Company { Name = "n", NameNormalized = "nn", About = "about", AreaId = 1, Website = "website" };
 
             // Act
-            var result = Connection.CreateOnConflictDoUpdateReturningCompanies(model);
+            var result = Connection.CreateCompanyOnConflictDoUpdateReturning(model);
 
             // Assert
-            model.Should().BeEquivalentTo(result, 
+            model.Should().BeEquivalentTo(result,
                 o => o.Excluding(c => c.Id).Excluding(c => c.Modified)); // Id and Modified are generated fields
         }
 
+
         [Fact]
-        public void CreateOnConflictDoUpdateReturningCompanies_Test2_Upsert()
+        public void CreateCompanyOnConflictDoUpdateReturning_Test1_Upsert()
         {
             // Arrange
             var model1 = new Company { Name = "n", NameNormalized = "nn", About = "about", AreaId = 1, Website = "website" };
             var model2 = new Company { Name = "n2", NameNormalized = "nn", About = "about2", AreaId = 1, Website = "website2" };
 
             // Act
-            var result1 = Connection.CreateOnConflictDoUpdateReturningCompanies(model1);
-            var result2 = Connection.CreateOnConflictDoUpdateReturningCompanies(model2, "name_normalized"); // name_normalized is unique index
+            var result1 = Connection.CreateCompanyOnConflictDoUpdateReturning(model1);
+            var result2 = Connection.CreateCompanyOnConflictDoUpdateReturning(model2, "name_normalized"); // name_normalized is unique index
 
             // Assert
             model2.Should().BeEquivalentTo(result2,

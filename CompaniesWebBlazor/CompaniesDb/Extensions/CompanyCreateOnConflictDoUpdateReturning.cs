@@ -10,7 +10,7 @@ using CompaniesWebBlazor.Shared;
 
 namespace CompaniesDb.Extensions
 {
-    public static class CompaniesCreateOnConflictDoUpdateReturning
+    public static class CompanyCreateOnConflictDoUpdateReturning
     {
         public const string Name = "companies";
 
@@ -61,7 +61,7 @@ namespace CompaniesDb.Extensions
         /// <param name="model">Instance of a "CompaniesDb.Extensions.Company" model class.</param>
         /// <param name="conflictedFields">Params list of field names that are tested for conflict. Default is list of primary keys.</param>
         /// <returns>Single instance of a "CompaniesDb.Extensions.Company" class that is mapped to resulting record of table ""companies""</returns>
-        public static Company CreateOnConflictDoUpdateReturningCompanies(this NpgsqlConnection connection, Company model, params string[] conflictedFields)
+        public static Company CreateCompanyOnConflictDoUpdateReturning(this NpgsqlConnection connection, Company model, params string[] conflictedFields)
         {
             return connection
                 .Prepared()
@@ -84,7 +84,7 @@ namespace CompaniesDb.Extensions
         /// <param name="model">Instance of a "CompaniesDb.Extensions.Company" model class.</param>
         /// <param name="conflictedFields">Params list of field names that are tested for conflict. Default is list of primary keys.</param>
         /// <returns>Single instance of a "CompaniesDb.Extensions.Company" class that is mapped to resulting record of table ""companies""</returns>
-        public static async ValueTask<Company> CreateOnConflictDoUpdateReturningCompaniesAsync(this NpgsqlConnection connection, Company model, params string[] conflictedFields)
+        public static async ValueTask<Company> CreateCompanyOnConflictDoUpdateReturningAsync(this NpgsqlConnection connection, Company model, params string[] conflictedFields)
         {
             return await connection
                 .Prepared()

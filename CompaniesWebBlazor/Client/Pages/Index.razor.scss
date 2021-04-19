@@ -1,3 +1,22 @@
 ﻿main {
+    padding-top: 65px;
 
+    .filter {
+        input, select {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        input {
+            max-width: 50%;
+        }
+
+        select {
+            margin-left: 10px !important;
+        }
+    }
+
+    .pager {
+        margin-top: 25px;
+    }
 }

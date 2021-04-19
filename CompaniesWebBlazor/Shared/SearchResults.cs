@@ -18,4 +18,10 @@ namespace CompaniesWebBlazor.Shared
         public long Count { get; set; }
         public List<SearchResultPage> Page { get; set; }
     }
+
+    public class SearchFilter
+    {
+        public string Search { get; set; }
+        public int? AreaId { get; set; }
+    }
 }

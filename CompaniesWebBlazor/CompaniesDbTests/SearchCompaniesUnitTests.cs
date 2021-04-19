@@ -18,11 +18,11 @@ namespace CompaniesDbTests
 
         private void AddRecords()
         {
-            Connection.CreateOnConflictDoUpdateReturningCompanies(new Company { Name = "n1", NameNormalized = "n1", About = "a1", AreaId = 1, Website = "ws1" });
-            Connection.CreateOnConflictDoUpdateReturningCompanies(new Company { Name = "n2", NameNormalized = "n2", About = "a2", AreaId = 2, Website = "ws2" });
-            Connection.CreateOnConflictDoUpdateReturningCompanies(new Company { Name = "n3", NameNormalized = "n3", About = "a3", AreaId = 3, Website = "ws3" });
-            Connection.CreateOnConflictDoUpdateReturningCompanies(new Company { Name = "n4", NameNormalized = "n4", About = "a4", AreaId = 4, Website = "ws4" });
-            Connection.CreateOnConflictDoUpdateReturningCompanies(new Company { Name = "n5", NameNormalized = "n5", About = "a5", AreaId = 5, Website = "ws5" });
+            Connection.CreateCompanyOnConflictDoUpdateReturning(new Company { Name = "n1", NameNormalized = "n1", About = "a1", AreaId = 1, Website = "ws1" });
+            Connection.CreateCompanyOnConflictDoUpdateReturning(new Company { Name = "n2", NameNormalized = "n2", About = "a2", AreaId = 2, Website = "ws2" });
+            Connection.CreateCompanyOnConflictDoUpdateReturning(new Company { Name = "n3", NameNormalized = "n3", About = "a3", AreaId = 3, Website = "ws3" });
+            Connection.CreateCompanyOnConflictDoUpdateReturning(new Company { Name = "n4", NameNormalized = "n4", About = "a4", AreaId = 4, Website = "ws4" });
+            Connection.CreateCompanyOnConflictDoUpdateReturning(new Company { Name = "n5", NameNormalized = "n5", About = "a5", AreaId = 5, Website = "ws5" });
 
         }
 

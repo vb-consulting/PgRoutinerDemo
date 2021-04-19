@@ -22,12 +22,12 @@ INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (1, 'IT');
 INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (2, 'Healthcare');
 INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (3, 'Finance');
 INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (4, 'Trade');
-INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (5, 'IT');
-INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (6, 'Healthcare');
-INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (7, 'Finance');
-INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (8, 'Trade');
 INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (9, 'Manufacturing');
 INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (10, 'Transportation');
+INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (5, 'AI');
+INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (6, 'Services');
+INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (7, 'Marketing');
+INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (8, 'Production');
 --
 -- Name: company_areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
