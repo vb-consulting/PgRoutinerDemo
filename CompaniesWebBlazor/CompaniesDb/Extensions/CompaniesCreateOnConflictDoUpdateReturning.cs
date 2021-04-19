@@ -68,9 +68,9 @@ namespace CompaniesDb.Extensions
                 .Read<Company>(Sql(model, conflictedFields.Length == 0 ? new string[] { "id" } : conflictedFields), 
                     ("id", model.Id, NpgsqlDbType.Bigint),
                     ("name", model.Name, NpgsqlDbType.Varchar),
-                    ("name_normalized", model.NameNormalized, NpgsqlDbType.Varchar),
+                    ("nameNormalized", model.NameNormalized, NpgsqlDbType.Varchar),
                     ("website", model.Website, NpgsqlDbType.Varchar),
-                    ("area_id", model.AreaId, NpgsqlDbType.Integer),
+                    ("areaId", model.AreaId, NpgsqlDbType.Integer),
                     ("about", model.About, NpgsqlDbType.Varchar),
                     ("modified", model.Modified, NpgsqlDbType.Timestamp))
                 .SingleOrDefault();
@@ -91,9 +91,9 @@ namespace CompaniesDb.Extensions
                 .ReadAsync<Company>(Sql(model, conflictedFields.Length == 0 ? new string[] { "id" } : conflictedFields), 
                     ("id", model.Id, NpgsqlDbType.Bigint),
                     ("name", model.Name, NpgsqlDbType.Varchar),
-                    ("name_normalized", model.NameNormalized, NpgsqlDbType.Varchar),
+                    ("nameNormalized", model.NameNormalized, NpgsqlDbType.Varchar),
                     ("website", model.Website, NpgsqlDbType.Varchar),
-                    ("area_id", model.AreaId, NpgsqlDbType.Integer),
+                    ("areaId", model.AreaId, NpgsqlDbType.Integer),
                     ("about", model.About, NpgsqlDbType.Varchar),
                     ("modified", model.Modified, NpgsqlDbType.Timestamp))
                 .SingleOrDefaultAsync();

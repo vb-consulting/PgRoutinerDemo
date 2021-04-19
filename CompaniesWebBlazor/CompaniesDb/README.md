@@ -1,7 +1,7 @@
 # Dictionary for database `companies_web_demo`
 
 - Server: PostgreSQL `localhost:5434`, version `12.0`
-- Local time stamp: `2021-04-19T12:08:18.9463833+02:00`
+- Local time stamp: `2021-04-19T14:05:33.3375168+02:00`
 - Schema: public
 
 ## Table of Contents
@@ -57,7 +57,7 @@ Search companies by filter and return data page with results.
 
 Parameters:
 
-- `_filter` is `json` with following schema `{"search", "area_id"}`
+- `_filter` is `json` with following schema `{"search", "areaId"}`
 
 - `page` page indexed from 1
 
@@ -67,7 +67,7 @@ Parameters:
 
 Returning json schema:
 
-`{"count", {"id", "name", "website", "area", "about", "modified"}}`
+`{"count", "page": {"id", "name", "website", "area", "about", "modified"}}`
 
 
 <!-- end -->

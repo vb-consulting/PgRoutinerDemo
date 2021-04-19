@@ -18,7 +18,7 @@ Demo application is implemented as ***Blazor WebAssembly*** application.
 ```txt
 $ dotnet tool install --global dotnet-pgroutiner
 You can invoke the tool using the following command: PgRoutiner
-Tool 'dotnet-pgroutiner' (version '3.3.4') was successfully installed.
+Tool 'dotnet-pgroutiner' (version '3.3.5') was successfully installed.
 ```
 
 3. Rebuild the solution.

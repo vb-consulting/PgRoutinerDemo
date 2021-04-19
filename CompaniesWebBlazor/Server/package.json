@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build-db": "dotnet build ../Shared/CompaniesWebBlazor.Shared.csproj",
+    "_recreate-db": "cd.. && cd CompaniesDb && pgroutiner",
     "scss-build": "node-sass --output ../Client ../Client --output-style compressed",
     "scss-watch": "node-sass --watch --recursive --output ../Client ../Client --output-style compressed",
     "dotnet-run": "dotnet run",

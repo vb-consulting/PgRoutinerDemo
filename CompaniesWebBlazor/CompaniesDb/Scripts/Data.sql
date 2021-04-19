@@ -29,13 +29,6 @@ INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (8, 'Trade');
 INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (9, 'Manufacturing');
 INSERT INTO public.company_areas OVERRIDING SYSTEM VALUE VALUES (10, 'Transportation');
 --
--- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: postgres
---
---
--- Name: companies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-PERFORM pg_catalog.setval('public.companies_id_seq', 1, false);
---
 -- Name: company_areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 PERFORM pg_catalog.setval('public.company_areas_id_seq', 10, true);

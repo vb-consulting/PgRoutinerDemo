@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompaniesWebBlazor.Server",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompaniesWebBlazor.Shared", "Shared\CompaniesWebBlazor.Shared.csproj", "{067B5DFD-EEEC-4146-A2A4-0131B2B20CCF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompaniesDbTests", "CompaniesDbTests\CompaniesDbTests.csproj", "{04F95E63-F0B2-4B72-8E7A-932C4BCDC047}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{067B5DFD-EEEC-4146-A2A4-0131B2B20CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{067B5DFD-EEEC-4146-A2A4-0131B2B20CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{067B5DFD-EEEC-4146-A2A4-0131B2B20CCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04F95E63-F0B2-4B72-8E7A-932C4BCDC047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F95E63-F0B2-4B72-8E7A-932C4BCDC047}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F95E63-F0B2-4B72-8E7A-932C4BCDC047}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F95E63-F0B2-4B72-8E7A-932C4BCDC047}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

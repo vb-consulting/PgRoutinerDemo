@@ -18,12 +18,12 @@ namespace CompaniesDb.Extensions
         /// 
         /// Search companies by filter and return data page with results.
         /// Parameters:
-        /// - `_filter` is `json` with following schema `{"search", "area_id"}`
+        /// - `_filter` is `json` with following schema `{"search", "areaId"}`
         /// - `page` page indexed from 1
         /// - `page_size`, default is 25
         /// 
         /// Returning json schema:
-        /// `{"count", {"id", "name", "website", "area", "about", "modified"}}`
+        /// `{"count", "page": {"id", "name", "website", "area", "about", "modified"}}`
         /// 
         /// </summary>
         /// <param name="filter">_filter json</param>
@@ -46,12 +46,12 @@ namespace CompaniesDb.Extensions
         /// 
         /// Search companies by filter and return data page with results.
         /// Parameters:
-        /// - `_filter` is `json` with following schema `{"search", "area_id"}`
+        /// - `_filter` is `json` with following schema `{"search", "areaId"}`
         /// - `page` page indexed from 1
         /// - `page_size`, default is 25
         /// 
         /// Returning json schema:
-        /// `{"count", {"id", "name", "website", "area", "about", "modified"}}`
+        /// `{"count", "page": {"id", "name", "website", "area", "about", "modified"}}`
         /// 
         /// </summary>
         /// <param name="filter">_filter json</param>

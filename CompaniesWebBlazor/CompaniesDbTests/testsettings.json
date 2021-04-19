@@ -1,0 +1,11 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Database=companies_web_demo;Port=5434;Username=postgres"
+  },
+  "TestSettings": {
+    "TestConnection": "DefaultConnection",
+    "TestDatabaseName": "companies_db_test_109be96f",
+    "UpScripts": [ "../../../../CompaniesDb/Scripts/Schema.sql", "../../../../CompaniesDb/Scripts/Data.sql" ],
+    "DownScripts": []
+  }
+}
