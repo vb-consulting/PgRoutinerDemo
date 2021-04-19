@@ -1,0 +1,17 @@
+
+.icon-edit:before { content: '\e800'; } /* '' */
+.icon-doc-new:before { content: '\e801'; } /* '' */
+.icon-doc-new-circled:before { content: '\e802'; } /* '' */
+.icon-doc-add:before { content: '\e803'; } /* '' */
+.icon-list-add:before { content: '\e804'; } /* '' */
+.icon-plus:before { content: '\e805'; } /* '' */
+.icon-plus-1:before { content: '\e806'; } /* '' */
+.icon-plus-circle:before { content: '\e807'; } /* '' */
+.icon-spin1:before { content: '\e830'; } /* '' */
+.icon-linkedin-circled:before { content: '\f05b'; } /* '' */
+.icon-github-circled:before { content: '\f09b'; } /* '' */
+.icon-plus-squared:before { content: '\f0fe'; } /* '' */
+.icon-user-plus:before { content: '\f234'; } /* '' */
+.icon-github-squared:before { content: '\f300'; } /* '' */
+.icon-linkedin-squared:before { content: '\f30c'; } /* '' */
+.icon-linkedin-rect:before { content: '\f31b'; } /* '' */

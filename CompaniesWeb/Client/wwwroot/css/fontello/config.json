@@ -1,0 +1,106 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "72109d2fb3088d0e66ea6a9204297651",
+      "css": "spin1",
+      "code": 59440,
+      "src": "fontelico"
+    },
+    {
+      "uid": "0ece9a12de796b8411f868d582bee678",
+      "css": "github-squared",
+      "code": 62208,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "1145676a91138011729fa2909997af66",
+      "css": "linkedin-squared",
+      "code": 62220,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "0f6a2573a7b6df911ed199bb63717e27",
+      "css": "github-circled",
+      "code": 61595,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "d0c177a8e1688175c3445cc6b25bcc90",
+      "css": "linkedin-circled",
+      "code": 61531,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "e9e96618b0f44170930f9b179237c76e",
+      "css": "linkedin-rect",
+      "code": 62235,
+      "src": "brandico"
+    },
+    {
+      "uid": "41087bc74d4b20b55059c60a33bf4008",
+      "css": "edit",
+      "code": 59392,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "9e0404ba55575a540164db9a5ad511df",
+      "css": "doc-new",
+      "code": 59393,
+      "src": "elusive"
+    },
+    {
+      "uid": "3a3b9605e79d81475ebe85e9f68086cd",
+      "css": "doc-new-circled",
+      "code": 59394,
+      "src": "elusive"
+    },
+    {
+      "uid": "bd517dbd6ccbc464f6d80efca97abb7d",
+      "css": "doc-add",
+      "code": 59395,
+      "src": "typicons"
+    },
+    {
+      "uid": "97bd5542ed3e143d2ee9b60e14487615",
+      "css": "list-add",
+      "code": 59396,
+      "src": "entypo"
+    },
+    {
+      "uid": "1bafeeb1808a5fe24484c7890096901a",
+      "css": "user-plus",
+      "code": 62004,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "44e04715aecbca7f266a17d5a7863c68",
+      "css": "plus",
+      "code": 59397,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "1a5cfa186647e8c929c2b17b9fc4dac1",
+      "css": "plus-squared",
+      "code": 61694,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "dbd39eb5a1d67beb54cfcb535e840e0f",
+      "css": "plus-1",
+      "code": 59398,
+      "src": "iconic"
+    },
+    {
+      "uid": "59ba4f90d2ca2a843f4f930b03270362",
+      "css": "plus-circle",
+      "code": 59399,
+      "src": "iconic"
+    }
+  ]
+}

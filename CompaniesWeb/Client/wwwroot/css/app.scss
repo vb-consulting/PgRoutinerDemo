@@ -1,0 +1,9 @@
+﻿$enable-grid-classes: true;
+
+@import "colors.scss";
+@import "../../../Server/node_modules/bootstrap/scss/_functions";
+@import "../../../Server/node_modules/bootstrap/scss/_variables";
+@import "../../../Server/node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "fontello/css/animation";
+@import "fontello/css/fontello";
