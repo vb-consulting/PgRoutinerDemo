@@ -1,6 +1,9 @@
 ﻿@page "/"
-@inject HttpClient Http
 @using System.Text.Json
+@using Microsoft.Extensions.Logging
+@using System.Threading
+@inject HttpClient Http
+@inject ILogger<Index> logger
 
 <_Nav BrandContent="PgRoutiner Demo"></_Nav>
 <main class="container vh-100">
@@ -9,8 +12,8 @@
         <div class="col form-group input-group">
             <input type="text" class="form-control"
                    autocorrect="off" autocapitalize="off" spellcheck="false"
-                   placeholder="Search by name..." />
-            <select class="form-select-lg">
+                   placeholder="Search by name..." @oninput="SearchInputChanged" />
+            <select class="form-select-lg" @onchange="AreaSelectChanged">
                 <option selected>Select area...</option>
                 @foreach (var area in areas)
                 {
@@ -31,12 +34,33 @@
 
     <div class="row pager">
         <div class="col">
-            <button type="button" class="btn btn-sm btn-outline-primary">
+            <button type="button" class="btn btn-sm btn-outline-primary@(page == 1 ? " disabled" : " ")" @onclick="() => GetSearchResultsAsync(1)">
                 First
             </button>
-            <button type="button" class="btn btn-sm btn-outline-primary">
-                Last
-            </button>
+            @if (pages.HasValue)
+            {
+                var from = page - (maxButtons / 2) < 1 ? 1 : page - (maxButtons / 2);
+                var to = from + maxButtons > pages ? pages : from + maxButtons - 1;
+                for (int i = from; i <= to; i++)
+                {
+                    var currPage = i;
+                    <button type="button" class="btn btn-sm btn-outline-primary@(page == i ? " disabled" : " ")" @onclick="() => GetSearchResultsAsync(currPage)">
+                        Page @currPage
+                    </button>
+                }
+                <button type="button" class="btn btn-sm btn-outline-primary@(page == pages ? " disabled" : " ")" @onclick="() => GetSearchResultsAsync(pages)">
+                    Last
+                </button>
+
+                <span class="text-end text-info float-end">
+                    @{
+                        var start = (page * pageSize) - pageSize + 1;
+                        var end = result.Count <= page * pageSize ? result.Count : page * pageSize;
+                    }
+                    <strong>@start.ToString("N0")</strong>-<strong>@end.ToString("N0")</strong> of @result.Count.ToString("N0")
+                </span>
+            }
+
         </div>
     </div>
 
@@ -53,17 +77,50 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var company in result.Page ?? Enumerable.Empty<SearchResultPage>())
+                @if (!pages.HasValue)
                 {
                     <tr>
-                        <th scope="row">
-                            <button type="button" class="btn btn-sm btn-outline-primary icon-edit"></button>
-                        </th>
-                        <td>@company.Name</td>
-                        <td>@company.Website</td>
-                        <td>@company.Area</td>
-                        <td>@company.About</td>
+                        <td colspan="5">
+                            <div class="text-center justify-content-center">
+                                <h1 class="display-4">
+                                    <span class="icon-spin1 animate-spin"></span>
+                                </h1>
+                            </div>
+                        </td>
                     </tr>
+                }
+                else
+                {
+                    @foreach (var company in result.Page)
+                    {
+                        string name;
+                        if (string.IsNullOrEmpty(filter.Search))
+                        {
+                            name = company.Name;
+                        }
+                        else
+                        {
+                            var index = company.Name.ToLower().IndexOf(filter.Search.ToLower());
+                            if (index > -1)
+                            {
+                                var segment = company.Name.Substring(index, filter.Search.Length);
+                                name = $"{company.Name.Substring(0, index)}<mark>{segment}</mark>{company.Name.Substring(index + filter.Search.Length)}";
+                            }
+                            else
+                            {
+                                name = company.Name;
+                            }
+                        }
+                        <tr>
+                            <th scope="row">
+                                <button type="button" class="btn btn-sm btn-outline-primary icon-edit"></button>
+                            </th>
+                            <td>@((MarkupString)name)</td>
+                            <td>@company.Website</td>
+                            <td>@company.Area</td>
+                            <td>@company.About</td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>
@@ -76,15 +133,65 @@
 @code {
     private IEnumerable<CompanyArea> areas = Enumerable.Empty<CompanyArea>();
     private SearchResults result = new();
-
+    private CancellationTokenSource cancellationTokenSource;
+    private const int maxButtons = 3;
     private const int pageSize = 10;
     private int page = 1;
+    private int? pages = null;
     private SearchFilter filter = new();
+
+    private async Task SearchInputChanged(ChangeEventArgs e)
+    {
+        filter.Search = e.Value as string;
+        cancellationTokenSource?.Cancel();
+        cancellationTokenSource?.Dispose();
+        cancellationTokenSource = new CancellationTokenSource();
+        var token = cancellationTokenSource.Token;
+
+        await Task.Delay(250, token);
+        await GetSearchResultsAsync(1);
+    }
+
+    private async Task AreaSelectChanged(ChangeEventArgs e)
+    {
+        try
+        {
+            filter.AreaId = Int32.Parse(e.Value as string);
+        }
+        catch (FormatException)
+        {
+            filter.AreaId = null;
+        }
+        await GetSearchResultsAsync(1);
+    }
+
+    private async Task GetSearchResultsAsync(int? newPage = null)
+    {
+        logger.LogInformation("loading page {0} for area id={1}", newPage ?? this.page, filter.AreaId);
+        result = await Http.GetFromJsonAsync<SearchResults>($"/companies/{SerializeAndEscape(filter)}/{newPage ?? this.page}/{pageSize}");
+        pages = (int)Math.Ceiling((double)result.Count / (double)pageSize);
+        if (newPage.HasValue)
+        {
+            this.page = newPage.Value;
+        }
+    }
+
+    private async Task GetAreasAsync()
+    {
+        areas = await Http.GetFromJsonAsync<IEnumerable<CompanyArea>>("/companies/areas");
+    }
+
+    private string SerializeAndEscape<T>(T obj)
+    {
+        return Uri.EscapeDataString(JsonSerializer.Serialize(obj, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }));
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        areas = await Http.GetFromJsonAsync<IEnumerable<CompanyArea>>("/companies/areas");
-        var f = Uri.EscapeDataString(JsonSerializer.Serialize(filter, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }));
-        result = await Http.GetFromJsonAsync<SearchResults>($"/companies/{f}/{page}/{pageSize}");
+        filter.Search = "";
+        filter.AreaId = null;
+        await GetAreasAsync();
+        await GetSearchResultsAsync();
+
     }
 }

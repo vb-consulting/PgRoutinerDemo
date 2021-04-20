@@ -1,4 +1,4 @@
-CREATE FUNCTION public.search_companies(_filter json, _page integer, _page_size integer DEFAULT 25) RETURNS json
+CREATE OR REPLACE FUNCTION public.search_companies(_filter json, _page integer, _page_size integer DEFAULT 25) RETURNS json
     LANGUAGE plpgsql SECURITY DEFINER
     AS $$
 declare
@@ -15,10 +15,6 @@ begin
     if _search is not null then
         _search := lower(_search);
     end if;
-    
-    raise info '%', _search;
-    raise info '%', _area_id;
-    
     create temp table companies_tmp on commit drop as
     select 
         id

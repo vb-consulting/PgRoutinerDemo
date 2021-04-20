@@ -27,6 +27,8 @@ namespace CompaniesDbTests
             // Assert
             model.Should().BeEquivalentTo(result,
                 o => o.Excluding(c => c.Id).Excluding(c => c.Modified)); // Id and Modified are generated fields
+            Assert.NotEqual(default, result.Id);
+            Assert.NotEqual(default, result.Modified);
         }
 
 

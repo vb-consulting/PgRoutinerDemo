@@ -21,7 +21,6 @@ namespace CompaniesDb.Extensions
         /// - `_filter` is `json` with following schema `{"search", "areaId"}`
         /// - `page` page indexed from 1
         /// - `page_size`, default is 25
-        /// 
         /// Returning json schema:
         /// `{"count", "page": {"id", "name", "website", "area", "about", "modified"}}`
         /// 
@@ -49,7 +48,6 @@ namespace CompaniesDb.Extensions
         /// - `_filter` is `json` with following schema `{"search", "areaId"}`
         /// - `page` page indexed from 1
         /// - `page_size`, default is 25
-        /// 
         /// Returning json schema:
         /// `{"count", "page": {"id", "name", "website", "area", "about", "modified"}}`
         /// 
