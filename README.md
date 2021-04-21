@@ -4,13 +4,13 @@ This repository contains examples for the `PgRoutiner` .NET tool for PostgreSQL.
 
 It demonstrates alternative to ORM approach and how to solve problems with classic Database-first approach by using this tool.
 
-<img src="https://raw.githubusercontent.com/vb-consulting/PgRoutinerDemo/master/mockup.svg" alt="drawing" width="640"/>
-
 High level concept:
 
 <img src="https://raw.githubusercontent.com/vb-consulting/PgRoutinerDemo/master/pgroutiner%20-%20concept.png" alt="concept" width="640"/>
 
-Demo application is implemented as ***Blazor WebAssembly*** application.
+Demo application is implemented as ***Blazor WebAssembly*** application. Demo application mockup:
+
+<img src="https://raw.githubusercontent.com/vb-consulting/PgRoutinerDemo/master/mockup.svg" alt="drawing" width="640"/>
 
 ## Installation
 
