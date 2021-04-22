@@ -6,9 +6,9 @@ The project demonstrates how you can utilize the `PgRoutiner` .NET tool to rapid
 
 It also represents an **alternative to the classic ORM approach** of building database applications by combining advanced PostgreSQL concepts with the database-first approach and letting the `PgRoutiner` generate automatically all necessary tedious code, that otherwise, you would have to write yourself.
 
-`PgRoutiner` is a .NET global tool that can be run manually from the command line. 
+`PgRoutiner` is a .NET global tool that can be run manually from the command line.
 
-It uses .NET configuration files or command-line parameters, combined with .NET configuration files - and it can be set in a project pre-build stage so it can generate all necessary code before each build.
+It uses **.NET configuration files** or **command-line parameters** - and it can be set in a project pre-build stage so it can generate all necessary code before each build.
 
 Historically, all disadvantages of database-first are addressed with the `PgRoutiner`, such as:
 
