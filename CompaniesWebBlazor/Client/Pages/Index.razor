@@ -15,17 +15,17 @@
                    placeholder="Search by name..." @oninput="SearchInputChanged" />
             <select class="form-select-lg" @onchange="AreaSelectChanged">
                 <option selected>Select area...</option>
-                @foreach (var area in areas)
-                {
-                    <option value="@area.Id">@area.Name</option>
-                }
+            @foreach (var area in areas)
+            {
+                <option value="@area.Id">@area.Name</option>
+            }
             </select>
         </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" @onclick="() => modal.Open()">
                 <i class="icon-doc-new" />
                 Add New
             </button>
@@ -111,9 +111,10 @@
                                 name = company.Name;
                             }
                         }
+                        var id = company.Id;
                         <tr>
                             <th scope="row">
-                                <button type="button" class="btn btn-sm btn-outline-primary icon-edit"></button>
+                                <button type="button" class="btn btn-sm btn-outline-primary icon-edit" @onclick="() => modal.Open(id)"></button>
                             </th>
                             <td>@((MarkupString)name)</td>
                             <td>@company.Website</td>
@@ -129,6 +130,7 @@
 
 </main>
 <_Footer></_Footer>
+<CompanyModal Areas="@areas" @ref="modal" OnUpdate="() => GetSearchResultsAsync()"></CompanyModal>
 
 @code {
     private IEnumerable<CompanyArea> areas = Enumerable.Empty<CompanyArea>();
@@ -139,6 +141,7 @@
     private int page = 1;
     private int? pages = null;
     private SearchFilter filter = new();
+    private CompanyModal modal { get; set; }
 
     private async Task SearchInputChanged(ChangeEventArgs e)
     {

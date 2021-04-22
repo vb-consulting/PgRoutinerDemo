@@ -1,0 +1,97 @@
+﻿@using Microsoft.Extensions.Logging
+@inject HttpClient Http
+@inject ILogger<CompanyModal> logger
+
+<Modal @ref="modal">
+    <Title>@title</Title>
+    <Body>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="col-form-label">Name:</label>
+                <input type="text" class="form-control" id="name" @bind="@company.Name">
+            </div>
+            <div class="mb-3">
+                <label for="website" class="col-form-label">Website:</label>
+                <input type="text" class="form-control" id="website" @bind="@company.Website">
+            </div>
+            <div class="mb-3">
+                <label for="areas" class="col-form-label">Area:</label>
+                <select class="form-select" id="areas" @bind="@company.AreaId">
+                    @foreach (var area in Areas)
+                    {
+                        <option value="@area.Id">@area.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="about" class="col-form-label">About:</label>
+                <textarea class="form-control" id="about" @bind="@company.About"></textarea>
+            </div>
+        </form>
+    </Body>
+    <Footer>
+        <button type="button" class="btn btn-primary" @onclick="Update">@btnCaption</button>
+        @if (!isNew)
+        {
+        <button type="button" class="btn btn-danger" @onclick="Delete">Delete</button>
+        }
+        
+    </Footer>
+</Modal>
+
+
+@code {
+    private Modal modal;
+    private Company company = new();
+    private string title;
+    private string btnCaption;
+    private bool isNew;
+
+    [Parameter]
+    public IEnumerable<CompanyArea> Areas { get; set; } = Enumerable.Empty<CompanyArea>();
+    [Parameter]
+    public EventCallback OnUpdate { get; set; }
+
+    private async Task Update()
+    {
+        logger.LogInformation("Updating company {0}: {1}", company.Id, company.Name);
+        await Http.PostAsJsonAsync<Company>("/companies", company);
+        await Close();
+        await OnUpdate.InvokeAsync();
+    }
+
+    private async Task Delete()
+    {
+        logger.LogInformation("Deleting company {0}: {1}", company.Id, company.Name);
+        await Http.PostAsJsonAsync<Company>("/companies/delete", company);
+        await Close();
+        await OnUpdate.InvokeAsync();
+    }
+
+    public async Task Open(long? id = null)
+    {
+        await modal.Open();
+        if (id == null)
+        {
+            isNew = true;
+            title = "Create new company";
+            btnCaption = "Insert";
+            company = new();
+        }
+        StateHasChanged();
+        if (id != null)
+        {
+            isNew = false;
+            title = "Update";
+            btnCaption = "Update";
+            company = await Http.GetFromJsonAsync<Company>($"/companies/read/{id}");
+            title = company.Name;
+        }
+    }
+
+    public async Task Close()
+    {
+        await modal.Close();
+        StateHasChanged();
+    }
+}

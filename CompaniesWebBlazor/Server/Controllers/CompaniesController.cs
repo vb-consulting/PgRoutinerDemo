@@ -50,5 +50,50 @@ namespace CompaniesWebBlazor.Server.Controllers
                 return this.BadRequest(e.Message);
             }
         }
+
+        [HttpGet("read/{id}")]
+        public ActionResult<Company> GetById(int id)
+        {
+            try
+            {
+                return Ok(connection.ReadCompanyById(id));
+            }
+            catch (NpgsqlException e)
+            {
+                logger.LogError(e, $"Erroc calling {CompanyReadBy.Name}");
+                return this.BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody]Company company)
+        {
+            try
+            {
+                company.NameNormalized = company.Name.ToLower();
+                connection.CreateCompanyOnConflictDoUpdateReturning(company);
+                return Ok();
+            }
+            catch (NpgsqlException e)
+            {
+                logger.LogError(e, $"Erroc calling {CompanyCreateOnConflictDoUpdateReturning.Name}");
+                return this.BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost("delete")]
+        public IActionResult Delete([FromBody] Company company)
+        {
+            try
+            {
+                connection.DeleteCompany(company);
+                return Ok();
+            }
+            catch (NpgsqlException e)
+            {
+                logger.LogError(e, $"Erroc calling {CompanyDelete.Name}");
+                return this.BadRequest(e.Message);
+            }
+        }
     }
 }
