@@ -1,4 +1,4 @@
-DO $CompaniesDb_schema$
+DO $CompaniesWebDb_schema$
 BEGIN
 --
 -- PostgreSQL database dump
@@ -180,5 +180,5 @@ ALTER TABLE ONLY public.companies
 --
 -- PostgreSQL database dump complete
 --
-END $CompaniesDb_schema$
+END $CompaniesWebDb_schema$
 LANGUAGE plpgsql;

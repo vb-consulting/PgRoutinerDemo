@@ -62,11 +62,7 @@ Tool 'dotnet-pgroutiner' (version '3.3.5') was successfully installed.
 
 4. Create an empty database on your PostgreSQL server. For example `CREATE DATABASE companies_web_demo;`
 
-5. Adjust connection strings to point to your database with a valid user that has grants for reading and writing. There are three of them in total:
-
-  1) [CompaniesDb project configration](https://github.com/vb-consulting/PgRoutinerDemo/blob/master/CompaniesWebBlazor/CompaniesDb/appsettings.PgRoutiner.json)
-  2) [CompaniesDbTests test project configuration](https://github.com/vb-consulting/PgRoutinerDemo/tree/master/CompaniesWebBlazor/CompaniesDbTests)
-  3) [Blazor server application configuration](https://github.com/vb-consulting/PgRoutinerDemo/blob/master/CompaniesWebBlazor/Server/appsettings.Development.json)
+5. Adjust connection strings to point to your database with a valid user that has grants for reading and writing. Connection string is located in a [Blazor server application configuration](https://github.com/vb-consulting/PgRoutinerDemo/blob/master/CompaniesWebBlazor/Server/appsettings.Development.json):
 
 6. Recreate entire schema in database by executing schema [script file](https://github.com/vb-consulting/PgRoutinerDemo/blob/master/CompaniesWebBlazor/CompaniesDb/Scripts/Schema.sql) and [data script file](https://github.com/vb-consulting/PgRoutinerDemo/blob/master/CompaniesWebBlazor/CompaniesDb/Scripts/Data.sql).
 

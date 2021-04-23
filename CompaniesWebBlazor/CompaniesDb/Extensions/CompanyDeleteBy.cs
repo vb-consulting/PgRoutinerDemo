@@ -10,7 +10,7 @@ using CompaniesWebBlazor.Shared;
 
 namespace CompaniesDb.Extensions
 {
-    public static class CompanyDelete
+    public static class CompanyDeleteBy
     {
         public const string Name = "companies";
 
@@ -20,27 +20,27 @@ namespace CompaniesDb.Extensions
                 ""id"" = @id";
 
         /// <summary>
-        /// Delete record of table ""companies"" by matching values of key fields: id
+        ///  Delete record of table ""companies"" by primary keys.
         /// </summary>
-        /// <param name="model">Instance of a "CompaniesDb.Extensions.Company" model class.</param>
-        public static void DeleteCompany(this NpgsqlConnection connection, Company model)
+        /// <param name="id">Select table ""companies"" where field id bigint is this value.</param>
+        public static void DeleteCompanyById(this NpgsqlConnection connection, long id)
         {
             connection
                 .Prepared()
                 .Execute(Sql, 
-                    ("id", model.Id, NpgsqlDbType.Bigint));
+                    ("id", id, NpgsqlDbType.Bigint));
         }
 
         /// <summary>
-        /// Delete record of table ""companies"" by matching values of key fields: id
+        /// Asynchronously delete record of table ""companies"" by primary keys.
         /// </summary>
-        /// <param name="model">Instance of a "CompaniesDb.Extensions.Company" model class.</param>
-        public static async ValueTask DeleteCompanyAsync(this NpgsqlConnection connection, Company model)
+        /// <param name="id">Select table ""companies"" where field id bigint is this value.</param>
+        public static async void DeleteCompanyByIdAsync(this NpgsqlConnection connection, long id)
         {
             await connection
                 .Prepared()
                 .ExecuteAsync(Sql, 
-                    ("id", model.Id, NpgsqlDbType.Bigint));
+                    ("id", id, NpgsqlDbType.Bigint));
         }
     }
 }

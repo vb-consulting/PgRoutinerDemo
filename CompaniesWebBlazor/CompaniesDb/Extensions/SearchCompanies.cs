@@ -15,7 +15,6 @@ namespace CompaniesDb.Extensions
 
         /// <summary>
         /// Executes plpgsql function "search_companies"
-        /// 
         /// Search companies by filter and return data page with results.
         /// Parameters:
         /// - `_filter` is `json` with following schema `{"search", "areaId"}`
@@ -23,7 +22,6 @@ namespace CompaniesDb.Extensions
         /// - `page_size`, default is 25
         /// Returning json schema:
         /// `{"count", "page": {"id", "name", "website", "area", "about", "modified"}}`
-        /// 
         /// </summary>
         /// <param name="filter">_filter json</param>
         /// <param name="page">_page integer</param>
@@ -42,7 +40,6 @@ namespace CompaniesDb.Extensions
 
         /// <summary>
         /// Asynchronously executes plpgsql function "search_companies"
-        /// 
         /// Search companies by filter and return data page with results.
         /// Parameters:
         /// - `_filter` is `json` with following schema `{"search", "areaId"}`
@@ -50,7 +47,6 @@ namespace CompaniesDb.Extensions
         /// - `page_size`, default is 25
         /// Returning json schema:
         /// `{"count", "page": {"id", "name", "website", "area", "about", "modified"}}`
-        /// 
         /// </summary>
         /// <param name="filter">_filter json</param>
         /// <param name="page">_page integer</param>

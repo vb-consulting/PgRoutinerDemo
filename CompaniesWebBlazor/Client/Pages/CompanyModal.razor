@@ -63,7 +63,7 @@
     private async Task Delete()
     {
         logger.LogInformation("Deleting company {0}: {1}", company.Id, company.Name);
-        await Http.PostAsJsonAsync<Company>("/companies/delete", company);
+        await Http.PostAsJsonAsync<dynamic>($"/companies/delete/{company.Id}", new { });
         await Close();
         await OnUpdate.InvokeAsync();
     }

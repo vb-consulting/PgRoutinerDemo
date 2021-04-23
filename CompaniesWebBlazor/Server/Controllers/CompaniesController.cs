@@ -81,17 +81,17 @@ namespace CompaniesWebBlazor.Server.Controllers
             }
         }
 
-        [HttpPost("delete")]
-        public IActionResult Delete([FromBody] Company company)
+        [HttpPost("delete/{id}")]
+        public IActionResult Delete(int id)
         {
             try
             {
-                connection.DeleteCompany(company);
+                connection.DeleteCompanyById(id);
                 return Ok();
             }
             catch (NpgsqlException e)
             {
-                logger.LogError(e, $"Erroc calling {CompanyDelete.Name}");
+                logger.LogError(e, $"Erroc calling {CompanyDeleteBy.Name}");
                 return this.BadRequest(e.Message);
             }
         }

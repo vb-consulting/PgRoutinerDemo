@@ -1,7 +1,7 @@
 # Dictionary for database `companies_web_demo`
 
 - Server: PostgreSQL `localhost:5434`, version `12.0`
-- Local time stamp: `2021-04-22T11:07:55.6727599+02:00`
+- Local time stamp: `2021-04-23T13:26:22.7402337+02:00`
 - Schema: public
 
 ## Table of Contents
@@ -51,21 +51,21 @@ List of all possible company areas.
 - Language is `plpgsql`
 
 <!-- comment on function "public"."search_companies"(json, integer, integer) is @until-end-tag; -->
+
 
+Search companies by filter and return data page with results.
 
-Search companies by filter and return data page with results.
+Parameters:
 
-Parameters:
+- `_filter` is `json` with following schema `{"search", "areaId"}`
 
-- `_filter` is `json` with following schema `{"search", "areaId"}`
+- `page` page indexed from 1
 
-- `page` page indexed from 1
+- `page_size`, default is 25
 
-- `page_size`, default is 25
+Returning json schema:
 
-Returning json schema:
-
-`{"count", "page": {"id", "name", "website", "area", "about", "modified"}}`
+`{"count", "page": {"id", "name", "website", "area", "about", "modified"}}`
 
 
 <!-- end -->

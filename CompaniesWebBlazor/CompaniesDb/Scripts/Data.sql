@@ -1,4 +1,4 @@
-DO $CompaniesDb_data$
+DO $CompaniesWebDb_data$
 BEGIN
 --
 -- PostgreSQL database dump
@@ -35,5 +35,5 @@ PERFORM pg_catalog.setval('public.company_areas_id_seq', 10, true);
 --
 -- PostgreSQL database dump complete
 --
-END $CompaniesDb_data$
+END $CompaniesWebDb_data$
 LANGUAGE plpgsql;
