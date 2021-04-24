@@ -1,0 +1,23 @@
+{
+  "name": "app",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "tsc watch": "tsc -w",
+    "tsc build": "tsc",
+    "scss-build": "node-sass ./src/assets/style.scss --output-style compressed > ./public/style.css",
+    "scss-watch": "node-sass --watch --recursive ./src/assets/style.scss --output-style compressed > ./public/style.css",
+    "build": "npm run scss-build && vite build",
+    "serve": "npm run scss-build && vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "next",
+    "bootstrap": "^5.0.0-beta3",
+    "node-sass": "^5.0.0",
+    "sass": "^1.32.11",
+    "svelte": "^3.35.0",
+    "svelte-preprocess": "^4.7.2",
+    "typescript": "^4.2.3",
+    "vite": "^2.1.5"
+  }
+}
