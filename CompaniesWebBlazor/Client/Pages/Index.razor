@@ -34,7 +34,7 @@
 
     <div class="row pager">
         <div class="col">
-            <button type="button" class="btn btn-sm btn-outline-primary@(page == 1 ? " disabled" : " ")" @onclick="() => GetSearchResultsAsync(1)">
+            <button type="button" class="btn btn-sm btn-outline-primary@(page == 1 ? " disabled" : "")" @onclick="() => GetSearchResultsAsync(1)">
                 First
             </button>
             @if (pages.HasValue)
@@ -44,11 +44,11 @@
                 for (int i = from; i <= to; i++)
                 {
                     var currPage = i;
-                    <button type="button" class="btn btn-sm btn-outline-primary@(page == i ? " disabled" : " ")" @onclick="() => GetSearchResultsAsync(currPage)">
+                    <button type="button" class="btn btn-sm btn-outline-primary@(page == i ? " disabled" : "")" @onclick="() => GetSearchResultsAsync(currPage)">
                         Page @currPage
                     </button>
                 }
-                <button type="button" class="btn btn-sm btn-outline-primary@(page == pages ? " disabled" : " ")" @onclick="() => GetSearchResultsAsync(pages)">
+                <button type="button" class="btn btn-sm btn-outline-primary@(page == pages ? " disabled" : "")" @onclick="() => GetSearchResultsAsync(pages)">
                     Last
                 </button>
 

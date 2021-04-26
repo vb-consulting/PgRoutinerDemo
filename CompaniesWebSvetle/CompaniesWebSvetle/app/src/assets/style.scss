@@ -25,3 +25,7 @@ $black: #000 !default;
 
 @import "fontello/css/animation";
 @import "fontello/css/fontello";
+
+mark {
+    padding: 0 !important;
+}

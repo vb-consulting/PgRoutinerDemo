@@ -1,6 +1,6 @@
 <script lang="ts">
-    export let brandLink: string = "";
-    export let brandContent: string;
+export let brandLink: string = "";
+export let brandContent: string;
 </script>
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">

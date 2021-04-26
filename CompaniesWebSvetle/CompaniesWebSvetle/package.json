@@ -1,6 +1,7 @@
 {
   "scripts": {
     "_recreate-db": "cd.. && cd CompaniesDb && pgroutiner",
+    "app-dev": "cd app && npm run dev",
     "app-build": "cd app && npm run build",
     "dotnet-run": "dotnet run"
   }
